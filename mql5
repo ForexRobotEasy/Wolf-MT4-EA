@@ -1,0 +1,67 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                              Wolf MT4 EA         |
+//|                                       Developer: Forex Robot Easy Team |
+//|                                         Website: forexroboteasy.com |
+//+------------------------------------------------------------------+
+
+// Global Variables
+input double MaxOrders = 10; // Maximum number of orders
+input double MinimumDeposit = 500; // Minimum deposit to start trading
+
+int magicNumber = 12345; // Unique identifier for trades
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//|                                                                  |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+   // Check if account balance is above minimum deposit
+   if(AccountInfoDouble(ACCOUNT_BALANCE) < MinimumDeposit)
+   {
+      Print('Insufficient funds to start trading. Minimum deposit required: $', MinimumDeposit);
+      return;
+   }
+   
+   // Check if maximum number of orders has been reached
+   if(OrdersTotal() >= MaxOrders)
+   {
+      Print('Maximum number of orders reached. Cannot open new positions.');
+      return;
+   }
+   
+   // Check if current symbol is EURUSD
+   if(Symbol() == 'EURUSD')
+   {
+      // Call default settings function for EURUSD
+      ApplyDefaultSettings();
+   }
+   
+   // Implement Grid Trading Strategy
+   // ...
+   
+   // Place orders
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//|                                                                  |
+//+------------------------------------------------------------------+
+void ApplyDefaultSettings()
+{
+   // Set specific settings for EURUSD
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//|                                                                  |
+//+------------------------------------------------------------------+
+void PlaceOrders()
+{
+   // Place orders based on Grid Trading Strategy
+   // ...
+}
+
